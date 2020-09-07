@@ -12,6 +12,7 @@ public class GetThePosOfStronghold {
     static double n = 0;
     static double deg1 = 0;
     static double deg2 = 0;
+    static long stime = -1;
     public static void main(String[] args) {
         System.out.println("You are running version 1.3");
         System.out.println("For latest version, https://github.com/kites262/Javasr/releases");
@@ -31,6 +32,7 @@ public class GetThePosOfStronghold {
                     b.z = scan.nextDouble();
                     deg2 = scan.nextDouble();
                 }
+                stime = System.currentTimeMillis();
                 m = getdis(a,s);
                 n = getdis(b,s);
             }catch(Exception error) {
@@ -48,41 +50,50 @@ public class GetThePosOfStronghold {
                 s.z=
                         s.z/sind(deg2-deg1);
             }
-
-            System.out.println("The pos of the Stronghold:");
-            System.out.printf("==> %.3f , %.3f",s.x,s.z);
-            System.out.println("");
-            System.out.println("EOC");
-        }
-
+        System.out.println("[INFO]>Done!("+(System.currentTimeMillis()-stime)/1000.0+"s)");
+        System.out.println("The pos of the Stronghold:");
+        System.out.printf("==> %.3f , %.3f",s.x,s.z);
+        System.out.println("");
+        System.out.println("EOC");
     }
 
+ }
+
     public static double sind(double deg) {
+        System.out.println("[INFO]>sind operation started");
         double r =
                 Math.sin(deg / 180 * Math.PI);
+        System.out.println("[INFO]>sind operation completed");
         return r;
     }
 
     public static double cosd(double deg) {
+        System.out.println("[INFO]>cosd operation started");
         double r =
                 Math.cos(deg / 180 * Math.PI);
-        System.out.println("s");
+        System.out.println("[INFO]>cosd operation completed");
         return r;
     }
 
     private static double getdis(pos aa,pos bb) {
+        System.out.println("[INFO]>distance operation started");
         double r =
                 rt(sq(aa.x-bb.x)+sq(aa.z-bb.z));
+        System.out.println("[INFO]>distance operation completed");
         return r;
     }
 
     public static double sq(double a) {
+        System.out.println("[INFO]>pow operation started");
         double r = Math.pow(a, 2);
+        System.out.println("[INFO]>pow operation completed");
         return r;
     }
 
     public static double rt(double a) {
+        System.out.println("[INFO]>rt operation started");
         double r = Math.sqrt(a);
+        System.out.println("[INFO]>et operation completed");
         return r;
     }
 
