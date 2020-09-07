@@ -4,6 +4,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.util.Scanner;
 
 public class GetThePosOfStronghold {
+    static final double v = 1.4;
     static Scanner scan = new Scanner(System.in);
     static pos a = new pos();
     static pos b = new pos();
@@ -14,7 +15,7 @@ public class GetThePosOfStronghold {
     static double deg2 = 0;
     static long stime = -1;
     public static void main(String[] args) {
-        System.out.println("You are running version 1.3");
+        System.out.println("You are running version " + v);
         System.out.println("For latest version, https://github.com/kites262/Javasr/releases");
         System.out.println("");
         for(;;) {
