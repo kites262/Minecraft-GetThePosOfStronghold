@@ -1,6 +1,4 @@
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
 
 public class GetThePosOfStronghold {
@@ -14,10 +12,11 @@ public class GetThePosOfStronghold {
     static double deg1 = 0;
     static double deg2 = 0;
     static long stime = -1;
+//    static boolean isFinished = false;
     public static void main(String[] args) {
         System.out.println("You are running version " + v);
         System.out.println("For latest version, https://github.com/kites262/Javasr/releases");
-        System.out.println("");
+        System.out.println();
         for(;;) {
             System.out.println("Now enter two sets of data:");
             try{
@@ -39,8 +38,8 @@ public class GetThePosOfStronghold {
             }catch(Exception error) {
                 System.out.println("[Error]Data error: Exist unsignificant figure(s)");
                 error.printStackTrace();
-                try{Thread.sleep(6400);}catch(Exception sleep) {}
-                System.exit(-1);
+                try{Thread.sleep(6400);}catch(Exception sleep){System.exit(-1);}
+                System.exit(1);
             }finally {
                 s.x=
                         a.x*sind(deg2)*cosd(deg1) - b.x*sind(deg1)*cosd(deg2) + ( a.z - b.z )*sind(deg1)*sind(deg2);
@@ -54,8 +53,9 @@ public class GetThePosOfStronghold {
         System.out.println("[INFO]>Done!("+(System.currentTimeMillis()-stime)/1000.0+"s)");
         System.out.println("The pos of the Stronghold:");
         System.out.printf("==> %.3f , %.3f",s.x,s.z);
-        System.out.println("");
-        System.out.println("EOC");
+        System.out.println();
+        System.out.println();
+        scan.next();
     }
 
  }
