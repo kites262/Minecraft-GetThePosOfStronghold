@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class GetThePosOfStronghold {
     static final double v = 1.4;
+
     static Scanner scan = new Scanner(System.in);
     static pos a = new pos();
     static pos b = new pos();
@@ -11,14 +12,15 @@ public class GetThePosOfStronghold {
     static double n = 0;
     static double deg1 = 0;
     static double deg2 = 0;
+    static String value = "NULL";
     static long stime = -1;
 //    static boolean isFinished = false;
     public static void main(String[] args) {
-        System.out.println("You are running version " + v);
-        System.out.println("For latest version, https://github.com/kites262/Javasr/releases");
-        System.out.println();
+        logger.pl(logger.RED,"You are running version " + v);
+        logger.pl(logger.INFO,"For latest version, https://github.com/kites262/Javasr/releases");
+        logger.newline();
         for(;;) {
-            System.out.println("Now enter two sets of data:");
+            logger.pl(logger.INFO,"Now enter two sets of data:");
             try{
                 System.out.print("->");
                 {
@@ -36,9 +38,8 @@ public class GetThePosOfStronghold {
                 m = getdis(a,s);
                 n = getdis(b,s);
             }catch(Exception error) {
-                System.out.println("[Error]Data error: Exist unsignificant figure(s)");
+                logger.pl(logger.EROR,"Data error: Exist unsignificant figure(s)");
                 error.printStackTrace();
-                try{Thread.sleep(6400);}catch(Exception sleep){System.exit(-1);}
                 System.exit(1);
             }finally {
                 s.x=
@@ -50,12 +51,11 @@ public class GetThePosOfStronghold {
                 s.z=
                         s.z/sind(deg2-deg1);
             }
-        System.out.println("[INFO]>Done!("+(System.currentTimeMillis()-stime)/1000.0+"s)");
-        System.out.println("The pos of the Stronghold:");
-        System.out.printf("==> %.3f , %.3f",s.x,s.z);
-        System.out.println();
-        System.out.println();
-        scan.next();
+        value = s.x + ", " + s.z;
+        logger.pl(logger.RED, s.x + ", " + s.z);
+        logger.pl(logger.INFO,"Done!("+(System.currentTimeMillis()-stime)/1000.0+"s)");
+        logger.newline();
+        logger.newline();
     }
 
  }
@@ -94,7 +94,7 @@ public class GetThePosOfStronghold {
     public static double rt(double a) {
         System.out.println("[INFO]>rt operation started");
         double r = Math.sqrt(a);
-        System.out.println("[INFO]>et operation completed");
+        System.out.println("[INFO]>rt operation completed");
         return r;
     }
 
