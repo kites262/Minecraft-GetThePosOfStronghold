@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class GetThePosOfStronghold {
     static final double v = 1.5;
     static final boolean GUIDebug =
-            true
+            false
             ;
 
     static Scanner scan = new Scanner(System.in);
