@@ -1,4 +1,5 @@
-//
+package fun;
+
 public class logger {
 	public static final int
 
@@ -7,6 +8,13 @@ public class logger {
 			WARN = 2,
 			EROR = 3,
 			RED = 5;
+	public static final int
+			RUNNING_VERSION = 11,
+			GITHUB_UPDATA = 12,
+			ENTER_IN_NUMBER = 13,
+			DATA_INPUT_ERROR = 14,
+			DONE_MESSAGE = 15,
+			ARROW_RIGHT = 16;
 
 	public static void pl(int level, String in){
 		if (level == INFO){

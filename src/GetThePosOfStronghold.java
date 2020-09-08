@@ -1,4 +1,9 @@
-//
+
+import GUI.ShowResult;
+import fun.calc;
+import fun.logger;
+import type.pos;
+
 import java.util.Scanner;
 
 public class GetThePosOfStronghold {
@@ -39,21 +44,21 @@ public class GetThePosOfStronghold {
                     deg2 = scan.nextDouble();
                 }
                 stime = System.currentTimeMillis();
-                m = getdis(a, s);
-                n = getdis(b, s);
+                m = calc.getdis(a, s);
+                n = calc.getdis(b, s);
             } catch (Exception error) {
                 logger.pl(logger.EROR, "Data error: Exist unsignificant figure(s)");
                 error.printStackTrace();
                 System.exit(1);
             } finally {
                 s.x =
-                        a.x * sind(deg2) * cosd(deg1) - b.x * sind(deg1) * cosd(deg2) + (a.z - b.z) * sind(deg1) * sind(deg2);
+                        a.x * calc.sind(deg2) * calc.cosd(deg1) - b.x * calc.sind(deg1) * calc.cosd(deg2) + (a.z - b.z) * calc.sind(deg1) * calc.sind(deg2);
                 s.x =
-                        s.x / sind(deg2 - deg1);
+                        s.x / calc.sind(deg2 - deg1);
                 s.z =
-                        b.z * sind(deg2) * cosd(deg1) - a.z * sind(deg1) * cosd(deg2) - (a.x - b.x) * cosd(deg1) * cosd(deg2);
+                        b.z * calc.sind(deg2) * calc.cosd(deg1) - a.z * calc.sind(deg1) * calc.cosd(deg2) - (a.x - b.x) * calc.cosd(deg1) * calc.cosd(deg2);
                 s.z =
-                        s.z / sind(deg2 - deg1);
+                        s.z / calc.sind(deg2 - deg1);
             }
             value = s.x + ", " + s.z;
             logger.pl(logger.RED, s.x + ", " + s.z);
@@ -70,44 +75,6 @@ public class GetThePosOfStronghold {
             b.z = 2.222;
             new ShowResult().ResultGUI("Done in " + lastime + "s", s, a, b, deg1, deg2);
         }
- }
-
-    public static double sind(double deg) {
-        System.out.println("[INFO]>sind operation started");
-        double r =
-                Math.sin(deg / 180 * Math.PI);
-        System.out.println("[INFO]>sind operation completed");
-        return r;
-    }
-
-    public static double cosd(double deg) {
-        System.out.println("[INFO]>cosd operation started");
-        double r =
-                Math.cos(deg / 180 * Math.PI);
-        System.out.println("[INFO]>cosd operation completed");
-        return r;
-    }
-
-    private static double getdis(pos aa,pos bb) {
-        System.out.println("[INFO]>distance operation started");
-        double r =
-                rt(sq(aa.x-bb.x)+sq(aa.z-bb.z));
-        System.out.println("[INFO]>distance operation completed");
-        return r;
-    }
-
-    public static double sq(double a) {
-        System.out.println("[INFO]>pow operation started");
-        double r = Math.pow(a, 2);
-        System.out.println("[INFO]>pow operation completed");
-        return r;
-    }
-
-    public static double rt(double a) {
-        System.out.println("[INFO]>rt operation started");
-        double r = Math.sqrt(a);
-        System.out.println("[INFO]>rt operation completed");
-        return r;
     }
 
 }
