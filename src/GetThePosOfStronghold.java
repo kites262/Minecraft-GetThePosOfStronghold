@@ -2,7 +2,10 @@
 import java.util.Scanner;
 
 public class GetThePosOfStronghold {
-    static final double v = 1.4;
+    static final double v = 1.5;
+    static final boolean GUIDebug =
+            true
+            ;
 
     static Scanner scan = new Scanner(System.in);
     static pos a = new pos();
@@ -18,45 +21,55 @@ public class GetThePosOfStronghold {
 //    static boolean isFinished = false;
     public static void main(String[] args) {
         logger.pl(logger.RED, "You are running version " + v);
-        logger.pl(logger.INFO, "For latest version, https://github.com/kites262/Javasr/releases");
-        logger.newline();
-
-        logger.pl(logger.INFO, "Now enter two sets of data:");
-        try {
-            System.out.print("->");
-            {
-                a.x = scan.nextDouble();
-                a.z = scan.nextDouble();
-                deg1 = scan.nextDouble();
+        if(!GUIDebug) {
+            logger.pl(logger.INFO, "For latest version, https://github.com/kites262/Javasr/releases");
+            logger.newline();
+            logger.pl(logger.INFO, "Now enter two sets of data:");
+            try {
+                System.out.print("->");
+                {
+                    a.x = scan.nextDouble();
+                    a.z = scan.nextDouble();
+                    deg1 = scan.nextDouble();
+                }
+                System.out.print("->");
+                {
+                    b.x = scan.nextDouble();
+                    b.z = scan.nextDouble();
+                    deg2 = scan.nextDouble();
+                }
+                stime = System.currentTimeMillis();
+                m = getdis(a, s);
+                n = getdis(b, s);
+            } catch (Exception error) {
+                logger.pl(logger.EROR, "Data error: Exist unsignificant figure(s)");
+                error.printStackTrace();
+                System.exit(1);
+            } finally {
+                s.x =
+                        a.x * sind(deg2) * cosd(deg1) - b.x * sind(deg1) * cosd(deg2) + (a.z - b.z) * sind(deg1) * sind(deg2);
+                s.x =
+                        s.x / sind(deg2 - deg1);
+                s.z =
+                        b.z * sind(deg2) * cosd(deg1) - a.z * sind(deg1) * cosd(deg2) - (a.x - b.x) * cosd(deg1) * cosd(deg2);
+                s.z =
+                        s.z / sind(deg2 - deg1);
             }
-            System.out.print("->");
-            {
-                b.x = scan.nextDouble();
-                b.z = scan.nextDouble();
-                deg2 = scan.nextDouble();
-            }
-            stime = System.currentTimeMillis();
-            m = getdis(a, s);
-            n = getdis(b, s);
-        } catch (Exception error) {
-            logger.pl(logger.EROR, "Data error: Exist unsignificant figure(s)");
-            error.printStackTrace();
-            System.exit(1);
-        } finally {
-            s.x =
-                    a.x * sind(deg2) * cosd(deg1) - b.x * sind(deg1) * cosd(deg2) + (a.z - b.z) * sind(deg1) * sind(deg2);
-            s.x =
-                    s.x / sind(deg2 - deg1);
-            s.z =
-                    b.z * sind(deg2) * cosd(deg1) - a.z * sind(deg1) * cosd(deg2) - (a.x - b.x) * cosd(deg1) * cosd(deg2);
-            s.z =
-                    s.z / sind(deg2 - deg1);
+            value = s.x + ", " + s.z;
+            logger.pl(logger.RED, s.x + ", " + s.z);
+            lastime = ((System.currentTimeMillis() - stime) / 1000.0);
+            new ShowResult().ResultGUI("Done in " + lastime + "s", s, a, b, deg1, deg2);
+            logger.pl(logger.INFO, "Done!(" + lastime + "s)");
+        }else {
+            lastime = 1.111;
+            s.x = 3.333;
+            s.z = 3.333;
+            a.x = 1.111;
+            a.z = 1.111;
+            b.x = 2.222;
+            b.z = 2.222;
+            new ShowResult().ResultGUI("Done in " + lastime + "s", s, a, b, deg1, deg2);
         }
-        value = s.x + ", " + s.z;
-        logger.pl(logger.RED, s.x + ", " + s.z);
-        lastime = ((System.currentTimeMillis() - stime) / 1000.0);
-        new ShowResult().ResultGUI("Done in "+lastime+"s",s,a,b,deg1,deg2);
-        logger.pl(logger.INFO, "Done!(" + lastime + "s)");
  }
 
     public static double sind(double deg) {
