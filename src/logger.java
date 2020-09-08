@@ -1,4 +1,4 @@
-
+//
 public class logger {
 	public static final int
 
