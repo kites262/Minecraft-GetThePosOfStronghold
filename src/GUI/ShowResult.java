@@ -94,7 +94,7 @@ public class ShowResult extends JFrame {
 		);
 		show_vb.setBounds(4,56,256,24);
 		JButton show_vr = new JButton(""
-				+pos.toString(s)
+				+pos.toString__three_number_behind(s)
 		);
 		show_va.setFont(font("微软雅黑",Font.ITALIC,16));
 		show_vb.setFont(font("微软雅黑",Font.ITALIC,16));

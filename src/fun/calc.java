@@ -40,4 +40,8 @@ public class calc {
 		System.out.println("[INFO]>rt operation completed");
 		return r;
 	}
+
+	public static double three_number_behind(double r){
+		return ((int)(r*1000.0))/1000.0;
+	}
 }

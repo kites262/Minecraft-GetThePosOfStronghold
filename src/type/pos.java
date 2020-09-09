@@ -1,5 +1,7 @@
 package type;
 
+import fun.calc;
+
 public class pos {
     public double
             x = 0,
@@ -9,5 +11,12 @@ public class pos {
                 +p.x
                 +", "
                 +p.z;
+    }
+
+    public static String toString__three_number_behind(pos p){
+        return ""
+                + calc.three_number_behind(p.x)
+                +", "
+                + calc.three_number_behind(p.z);
     }
 }
