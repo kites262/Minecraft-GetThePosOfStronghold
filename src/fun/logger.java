@@ -6,7 +6,7 @@ public class logger {
 //			NULL = 0,
 			INFO = 1,
 			WARN = 2,
-			EROR = 3,
+			ERROR = 3,
 			RED = 5;
 	public static final int
 			RUNNING_VERSION = 11,
@@ -21,10 +21,28 @@ public class logger {
 			info(in);
 		}else if (level == WARN){
 			warning(in);
-		}else if (level == EROR){
+		}else if (level == ERROR){
 			error(in);
-		}else if (level == RED){
+		}else if (level == RED) {
 			System.err.println(in);
+		}
+	}
+	public static void p(int level, String in){
+
+	}
+	public static void message(int type, double sign){
+		if (type == RUNNING_VERSION){
+			logger.pl(logger.RED, "You are running version " + sign);
+		}else if (type == GITHUB_UPDATA){
+			logger.pl(logger.INFO, "For latest version, https://github.com/kites262/Javasr/releases");
+		}else if (type == ENTER_IN_NUMBER){
+			logger.pl(logger.INFO, "Now enter two sets of data:");
+		}else if (type == DATA_INPUT_ERROR){
+			logger.pl(logger.ERROR, "Data error: Exist unsignificant figure(s)");
+		}else if (type == DONE_MESSAGE){
+			logger.pl(logger.INFO, "Done!(" + sign + "s)");
+		}else if (type == ARROW_RIGHT){
+			System.out.print("->");
 		}
 	}
 	public static void newline(){
