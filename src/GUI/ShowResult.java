@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+
 import type.pos;
 
 public class ShowResult extends JFrame {
@@ -96,10 +97,13 @@ public class ShowResult extends JFrame {
 		JButton show_vr = new JButton(""
 				+pos.toString__three_number_behind(s)
 		);
+		show_vr.addActionListener(Listener -> Button.Exit());
+
 		show_va.setFont(font("微软雅黑",Font.ITALIC,16));
 		show_vb.setFont(font("微软雅黑",Font.ITALIC,16));
+
 		show_vr.setBounds(0,128,256,64);
-		show_vr.setFont(font("Console",Font.BOLD,16));
+		show_vr.setFont(font("Console",Font.BOLD,18));
 		show_vr.setBackground(Color.gray);
 		show_vr.setForeground(Color.orange);
 
@@ -108,11 +112,11 @@ public class ShowResult extends JFrame {
 		container.add(show_vr);
 		container.setBackground(Color.white);
 
+		setAlwaysOnTop(true);
 		setVisible(true);
 	}
 
 	private static Font font(String type, int style, int size) {
 		return new Font(type,style,size);
 	}
-
 }

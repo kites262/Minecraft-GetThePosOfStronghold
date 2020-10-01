@@ -69,7 +69,6 @@ public class flow {
 		b.z = 2.222;
 		new GUI.ShowResult().ResultGUI("Done in " + lastime + "s", s, a, b, deg1, deg2);
 	}
-
 }
 
 

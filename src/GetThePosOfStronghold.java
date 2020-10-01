@@ -4,8 +4,8 @@ import fun.logger;
 public class GetThePosOfStronghold {
     public static double version = 1.5;
     public static char BetaChar = 'x';
-    public static final int Debug = fun.Debug.
-/*Debug Type*/ NULL;
+    public static final int Debug = fun.
+/*Debug Type*/ Debug.NULL;
 
     public static void main(String[] args) {
         logger.message(logger.RUNNING_VERSION,version);
