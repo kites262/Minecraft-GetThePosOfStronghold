@@ -1,4 +1,4 @@
-# Minecraft-GetThePosOfStronghold
+# Minecraft-StrongholdCracker
 
 
 
